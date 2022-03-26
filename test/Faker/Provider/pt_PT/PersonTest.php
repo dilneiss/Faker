@@ -6,10 +6,14 @@ use Faker\Generator;
 use Faker\Provider\pt_PT\Person;
 use PHPUnit\Framework\TestCase;
 
-final class PersonTest extends TestCase
+class PersonTest extends TestCase
 {
+    /**
+     * @var Generator
+     */
+    private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Person($faker));
@@ -26,7 +30,7 @@ final class PersonTest extends TestCase
      *
      * @link http://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
      *
-     * @param type $tin
+     * @param mixed $tin
      *
      * @return boolean
      */

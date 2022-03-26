@@ -5,15 +5,20 @@ namespace Faker\Test\Provider;
 use Faker\Provider\DateTime as DateTimeProvider;
 use PHPUnit\Framework\TestCase;
 
-final class DateTimeTest extends TestCase
+class DateTimeTest extends TestCase
 {
-    protected function setUp()
+    /**
+     * @var string
+     */
+    private $defaultTz;
+
+    protected function setUp(): void
     {
         $this->defaultTz = 'UTC';
         DateTimeProvider::setDefaultTimezone($this->defaultTz);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         DateTimeProvider::setDefaultTimezone();
     }
@@ -71,7 +76,7 @@ final class DateTimeTest extends TestCase
     public function testUnixTime()
     {
         $timestamp = DateTimeProvider::unixTime();
-        $this->assertInternalType('int', $timestamp);
+        $this->assertIsInt($timestamp);
         $this->assertGreaterThanOrEqual(0, $timestamp);
         $this->assertLessThanOrEqual(time(), $timestamp);
     }
@@ -122,7 +127,7 @@ final class DateTimeTest extends TestCase
     {
         $date = DateTimeProvider::dateTimeThisYear();
         $this->assertInstanceOf('\DateTime', $date);
-        $this->assertGreaterThanOrEqual(new \DateTime('first day of january this year'), $date);
+        $this->assertGreaterThanOrEqual(new \DateTime('-1 year'), $date);
         $this->assertLessThanOrEqual(new \DateTime(), $date);
         $this->assertEquals(new \DateTimeZone($this->defaultTz), $date->getTimezone());
     }
@@ -197,19 +202,19 @@ final class DateTimeTest extends TestCase
 
     public function providerDateTimeBetween()
     {
-        return array(
-            array('-1 year', false),
-            array('-1 year', null),
-            array('-1 day', '-1 hour'),
-            array('-1 day', 'now'),
-        );
+        return [
+            ['-1 year', false],
+            ['-1 year', null],
+            ['-1 day', '-1 hour'],
+            ['-1 day', 'now'],
+        ];
     }
 
     /**
      *
      * @dataProvider providerDateTimeInInterval
      */
-    public function testDateTimeInInterval($start, $interval = "+5 days", $isInFuture)
+    public function testDateTimeInInterval($start, $interval, $isInFuture)
     {
         $date = DateTimeProvider::dateTimeInInterval($start, $interval);
         $this->assertInstanceOf('\DateTime', $date);
@@ -227,11 +232,11 @@ final class DateTimeTest extends TestCase
 
     public function providerDateTimeInInterval()
     {
-        return array(
-            array('-1 year', '+5 days', true),
-            array('-1 day', '-1 hour', false),
-            array('-1 day', '+1 hour', true),
-        );
+        return [
+            ['-1 year', '+5 days', true],
+            ['-1 day', '-1 hour', false],
+            ['-1 day', '+1 hour', true],
+        ];
     }
 
     public function testFixedSeedWithMaximumTimestamp()

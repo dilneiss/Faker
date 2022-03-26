@@ -6,14 +6,14 @@ use Faker\Generator;
 use Faker\Provider\ru_RU\Company;
 use PHPUnit\Framework\TestCase;
 
-final class CompanyTest extends TestCase
+class CompanyTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Company($faker));
@@ -39,8 +39,10 @@ final class CompanyTest extends TestCase
     {
         $phrase = $this->faker->catchPhrase;
         $this->assertNotNull($phrase);
-        $this->assertGreaterThanOrEqual(3,
+        $this->assertGreaterThanOrEqual(
+            3,
             count(explode(' ', $this->faker->catchPhrase)),
-            "'$phrase' - should be contain 3 word");
+            "'$phrase' - should be contain 3 word"
+        );
     }
 }

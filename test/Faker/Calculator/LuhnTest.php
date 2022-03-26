@@ -10,20 +10,20 @@ final class LuhnTest extends TestCase
 
     public function checkDigitProvider()
     {
-        return array(
-            array('7992739871', '3'),
-            array('3852000002323', '7'),
-            array('37144963539843', '1'),
-            array('561059108101825', '0'),
-            array('601100099013942', '4'),
-            array('510510510510510', '0'),
-            array(7992739871, '3'),
-            array(3852000002323, '7'),
-            array('37144963539843', '1'),
-            array('561059108101825', '0'),
-            array('601100099013942', '4'),
-            array('510510510510510', '0')
-        );
+        return [
+            ['7992739871', '3'],
+            ['3852000002323', '7'],
+            ['37144963539843', '1'],
+            ['561059108101825', '0'],
+            ['601100099013942', '4'],
+            ['510510510510510', '0'],
+            [7992739871, '3'],
+            [3852000002323, '7'],
+            ['37144963539843', '1'],
+            ['561059108101825', '0'],
+            ['601100099013942', '4'],
+            ['510510510510510', '0']
+        ];
     }
 
     /**
@@ -31,26 +31,26 @@ final class LuhnTest extends TestCase
      */
     public function testComputeCheckDigit($partialNumber, $checkDigit)
     {
-        $this->assertInternalType('string', $checkDigit);
+        $this->assertIsString($checkDigit);
         $this->assertEquals($checkDigit, Luhn::computeCheckDigit($partialNumber));
     }
 
     public function validatorProvider()
     {
-        return array(
-            array('79927398710', false),
-            array('79927398711', false),
-            array('79927398712', false),
-            array('79927398713', true),
-            array('79927398714', false),
-            array('79927398715', false),
-            array('79927398716', false),
-            array('79927398717', false),
-            array('79927398718', false),
-            array('79927398719', false),
-            array(79927398713, true),
-            array(79927398714, false),
-        );
+        return [
+            ['79927398710', false],
+            ['79927398711', false],
+            ['79927398712', false],
+            ['79927398713', true],
+            ['79927398714', false],
+            ['79927398715', false],
+            ['79927398716', false],
+            ['79927398717', false],
+            ['79927398718', false],
+            ['79927398719', false],
+            [79927398713, true],
+            [79927398714, false],
+        ];
     }
 
     /**
@@ -61,12 +61,12 @@ final class LuhnTest extends TestCase
         $this->assertEquals($isValid, Luhn::isValid($number));
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument should be an integer.
-     */
+
     public function testGenerateLuhnNumberWithInvalidPrefix()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument should be an integer.');
+
         Luhn::generateLuhnNumber('abc');
     }
 }

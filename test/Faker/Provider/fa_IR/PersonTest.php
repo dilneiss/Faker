@@ -2,11 +2,11 @@
 
 namespace Faker\Test\Provider\fa_IR;
 
-use Faker\Provider\fa_IR\Person;
 use Faker\Generator;
+use Faker\Provider\fa_IR\Person;
 use PHPUnit\Framework\TestCase;
 
-final class PersonTest extends TestCase
+class PersonTest extends TestCase
 {
 
     /**
@@ -14,7 +14,7 @@ final class PersonTest extends TestCase
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Person($faker));

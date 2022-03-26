@@ -1,12 +1,18 @@
 <?php
 
+/**
+ * Created by Domingo Oropeza for Faker
+ * Date: 01/09/2017
+ * Time: 11:02 PM
+ */
+
 namespace Faker\Test\Provider\es_VE;
 
 use Faker\Generator;
 use Faker\Provider\es_VE\Person;
 use PHPUnit\Framework\TestCase;
 
-final class PersonTest extends TestCase
+class PersonTest extends TestCase
 {
 
     /**
@@ -14,7 +20,7 @@ final class PersonTest extends TestCase
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->seed(1);

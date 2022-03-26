@@ -1,19 +1,18 @@
 <?php
 
-
 namespace Faker\Provider\tr_TR;
 
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;
 
-final class PaymentTest extends TestCase
+class PaymentTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Payment($faker));

@@ -6,14 +6,14 @@ use Faker\Generator;
 use Faker\Provider\es_ES\Text;
 use PHPUnit\Framework\TestCase;
 
-final class TextTest extends TestCase
+class TextTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Text($faker));

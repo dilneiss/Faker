@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Mark van der Velden <mark@dynom.nl>
+ */
+
 namespace Faker\Test\Provider;
 
 use Faker;
@@ -14,7 +18,7 @@ use PHPUnit\Framework\TestCase;
  * locale specific provider (can) has specific implementations. The goal of this test is to test the common denominator
  * and to try to catch possible invalid multi-byte sequences.
  */
-final class ProviderOverrideTest extends TestCase
+class ProviderOverrideTest extends TestCase
 {
     /**
      * Constants with regular expression patterns for testing the output.
@@ -149,12 +153,12 @@ final class ProviderOverrideTest extends TestCase
     public function localeDataProvider()
     {
         $locales = $this->getAllLocales();
-        $data = array();
+        $data = [];
 
         foreach ($locales as $locale) {
-            $data[] = array(
+            $data[] = [
                 $locale
-            );
+            ];
         }
 
         return $data;
@@ -168,15 +172,15 @@ final class ProviderOverrideTest extends TestCase
      */
     private function getAllLocales()
     {
-        static $locales = array();
+        static $locales = [];
 
-        if ( ! empty($locales)) {
+        if (! empty($locales)) {
             return $locales;
         }
 
         // Finding all PHP files in the xx_XX directories
-        $providerDir = __DIR__ .'/../../../src/Faker/Provider';
-        foreach (glob($providerDir .'/*_*/*.php') as $file) {
+        $providerDir = __DIR__ . '/../../../src/Faker/Provider';
+        foreach (glob($providerDir . '/*_*/*.php') as $file) {
             $localisation = basename(dirname($file));
 
             if (isset($locales[ $localisation ])) {

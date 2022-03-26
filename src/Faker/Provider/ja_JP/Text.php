@@ -10,9 +10,9 @@ class Text extends \Faker\Provider\Text
     /**
      * All punctuation in $baseText: 、 。 「 」 『 』 ！ ？ ー ， ： ；
      */
-    protected static $notEndPunct = array('、', '「', '『', 'ー', '，', '：', '；');
-    protected static $endPunct = array('。', '」', '』', '！', '？');
-    protected static $notBeginPunct = array('、', '。', '」', '』', '！', '？', 'ー', '，', '：', '；');
+    protected static $notEndPunct = ['、', '「', '『', 'ー', '，', '：', '；'];
+    protected static $endPunct = ['。', '」', '』', '！', '？'];
+    protected static $notBeginPunct = ['、', '。', '」', '』', '！', '？', 'ー', '，', '：', '；'];
 
     /**
      * Title: 銀河鉄道の夜 Night On The Milky Way Train
@@ -597,7 +597,7 @@ EOT;
 
     protected static function explode($text)
     {
-        $chars = array();
+        $chars = [];
         foreach (preg_split('//u', preg_replace('/\s+/u', '', $text)) as $char) {
             if ($char !== '') {
                 $chars[] = $char;
@@ -622,7 +622,7 @@ EOT;
         if (function_exists('mb_substr')) {
             $last = mb_substr($text, 0, mb_strlen($text) - 1, 'UTF-8');
         } else {
-            $chars = static::split($text);
+            $chars = str_split($text);
             $last = end($chars);
         }
         // if the last char is a not-valid-end punctuation, remove it

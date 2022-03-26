@@ -5,19 +5,18 @@ namespace Faker\Test\Provider\nl_BE;
 use Faker\Generator;
 use Faker\Provider\nl_BE\Person;
 use PHPUnit\Framework\TestCase;
-use Datetime;
 
 /**
  * @group Person
  */
-final class PersonTest extends TestCase
+class PersonTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Person($faker));
@@ -33,7 +32,7 @@ final class PersonTest extends TestCase
         $ctrlNumber = substr($rrn, 9, 2);
         $calcCtrl = 97 - (substr($rrn, 0, 9) % 97);
         $altcalcCtrl = 97 - ((2 . substr($rrn, 0, 9)) % 97);
-        $this->assertContains($ctrlNumber, array($calcCtrl, $altcalcCtrl));
+        $this->assertContains($ctrlNumber, [$calcCtrl, $altcalcCtrl]);
 
         $middle = substr($rrn, 6, 3);
         $this->assertGreaterThan(1, $middle);

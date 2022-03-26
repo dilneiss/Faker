@@ -27,5 +27,4 @@ final class HtmlLoremTest extends TestCase
         $error = $dom->loadHTML($node);
         $this->assertTrue($error);
     }
-
 }

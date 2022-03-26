@@ -4,16 +4,17 @@ namespace Faker\Test\Provider\fr_FR;
 
 use PHPUnit\Framework\TestCase;
 
-final class TextTest extends TestCase
+class TextTest extends TestCase
 {
     private $textClass;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->textClass = new \ReflectionClass('Faker\Provider\fr_FR\Text');
     }
 
-    protected function getMethod($name) {
+    protected function getMethod($name)
+    {
         $method = $this->textClass->getMethod($name);
 
         $method->setAccessible(true);
@@ -21,36 +22,36 @@ final class TextTest extends TestCase
         return $method;
     }
 
-    function testItShouldAppendEndPunctToTheEndOfString()
+    public function testItShouldAppendEndPunctToTheEndOfString()
     {
         $this->assertSame(
             'Que faisaient-elles maintenant? À.',
-            $this->getMethod('appendEnd')->invokeArgs(null, array('Que faisaient-elles maintenant? À '))
+            $this->getMethod('appendEnd')->invokeArgs(null, ['Que faisaient-elles maintenant? À '])
         );
 
         $this->assertSame(
             'Que faisaient-elles maintenant? À.',
-            $this->getMethod('appendEnd')->invokeArgs(null, array('Que faisaient-elles maintenant? À—   '))
+            $this->getMethod('appendEnd')->invokeArgs(null, ['Que faisaient-elles maintenant? À—   '])
         );
 
         $this->assertSame(
             'Que faisaient-elles maintenant? À.',
-            $this->getMethod('appendEnd')->invokeArgs(null, array('Que faisaient-elles maintenant? À,'))
+            $this->getMethod('appendEnd')->invokeArgs(null, ['Que faisaient-elles maintenant? À,'])
         );
 
         $this->assertSame(
             'Que faisaient-elles maintenant? À!.',
-            $this->getMethod('appendEnd')->invokeArgs(null, array('Que faisaient-elles maintenant? À! '))
+            $this->getMethod('appendEnd')->invokeArgs(null, ['Que faisaient-elles maintenant? À! '])
         );
 
         $this->assertSame(
             'Que faisaient-elles maintenant? À.',
-            $this->getMethod('appendEnd')->invokeArgs(null, array('Que faisaient-elles maintenant? À: '))
+            $this->getMethod('appendEnd')->invokeArgs(null, ['Que faisaient-elles maintenant? À: '])
         );
 
         $this->assertSame(
             'Que faisaient-elles maintenant? À.',
-            $this->getMethod('appendEnd')->invokeArgs(null, array('Que faisaient-elles maintenant? À; '))
+            $this->getMethod('appendEnd')->invokeArgs(null, ['Que faisaient-elles maintenant? À; '])
         );
     }
 }

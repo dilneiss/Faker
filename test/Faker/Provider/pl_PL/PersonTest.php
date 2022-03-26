@@ -6,14 +6,14 @@ use DateTime;
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;
 
-final class PersonTest extends TestCase
+class PersonTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Person($faker));
@@ -89,7 +89,7 @@ final class PersonTest extends TestCase
     public function testPeselCheckSum()
     {
         $pesel   = $this->faker->pesel();
-        $weights = array(1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1);
+        $weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1];
         $sum     = 0;
 
         foreach ($weights as $key => $weight) {

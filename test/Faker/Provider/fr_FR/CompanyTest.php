@@ -5,13 +5,14 @@ namespace Faker\Test\Provider\fr_FR;
 use Faker\Calculator\Luhn;
 use Faker\Generator;
 use Faker\Provider\fr_FR\Company;
+use Faker\Test\Fixture;
 use PHPUnit\Framework\TestCase;
 
-final class CompanyTest extends TestCase
+class CompanyTest extends TestCase
 {
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Company($faker));
@@ -50,26 +51,18 @@ final class CompanyTest extends TestCase
 
     public function testCatchPhraseReturnsValidCatchPhrase()
     {
-        $this->assertTrue(TestableCompany::isCatchPhraseValid($this->faker->catchPhrase()));
+        $this->assertTrue(Fixture\Provider\fr_FR\Company\TestableCompany::isCatchPhraseValid($this->faker->catchPhrase()));
     }
 
     public function testIsCatchPhraseValidReturnsFalseWhenAWordsAppearsTwice()
     {
-        $isCatchPhraseValid = TestableCompany::isCatchPhraseValid('La sécurité de rouler en toute sécurité');
+        $isCatchPhraseValid = Fixture\Provider\fr_FR\Company\TestableCompany::isCatchPhraseValid('La sécurité de rouler en toute sécurité');
         $this->assertFalse($isCatchPhraseValid);
     }
 
     public function testIsCatchPhraseValidReturnsTrueWhenNoWordAppearsTwice()
     {
-        $isCatchPhraseValid = TestableCompany::isCatchPhraseValid('La sécurité de rouler en toute simplicité');
+        $isCatchPhraseValid = Fixture\Provider\fr_FR\Company\TestableCompany::isCatchPhraseValid('La sécurité de rouler en toute simplicité');
         $this->assertTrue($isCatchPhraseValid);
-    }
-}
-
-final class TestableCompany extends Company
-{
-    public static function isCatchPhraseValid($catchPhrase)
-    {
-        return parent::isCatchPhraseValid($catchPhrase);
     }
 }

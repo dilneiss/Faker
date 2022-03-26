@@ -1,4 +1,5 @@
 <?php
+
 namespace Faker\Test\Provider\kk_KZ;
 
 use Faker\Generator;
@@ -6,13 +7,17 @@ use Faker\Provider\DateTime;
 use Faker\Provider\kk_KZ\Person;
 use PHPUnit\Framework\TestCase;
 
-final class PersonTest extends TestCase
+class PersonTest extends TestCase
 {
+    /**
+     * @var Generator
+     */
+    private $faker;
 
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->faker = new Generator();
 

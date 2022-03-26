@@ -7,15 +7,15 @@ use Faker\Provider\fr_CH\Address;
 use Faker\Provider\fr_CH\Person;
 use PHPUnit\Framework\TestCase;
 
-final class AddressTest extends TestCase
+class AddressTest extends TestCase
 {
 
     /**
-     * @var Faker\Generator
+     * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Address($faker));
@@ -26,16 +26,16 @@ final class AddressTest extends TestCase
     /**
      * @test
      */
-    public function canton ()
+    public function canton()
     {
         $canton = $this->faker->canton();
-        $this->assertInternalType('array', $canton);
+        $this->assertIsArray($canton);
         $this->assertCount(1, $canton);
 
-        foreach ($canton as $cantonShort => $cantonName){
-            $this->assertInternalType('string', $cantonShort);
+        foreach ($canton as $cantonShort => $cantonName) {
+            $this->assertIsString($cantonShort);
             $this->assertEquals(2, strlen($cantonShort));
-            $this->assertInternalType('string', $cantonName);
+            $this->assertIsString($cantonName);
             $this->assertGreaterThan(2, strlen($cantonName));
         }
     }
@@ -43,29 +43,29 @@ final class AddressTest extends TestCase
     /**
      * @test
      */
-    public function cantonName ()
+    public function cantonName()
     {
         $cantonName = $this->faker->cantonName();
-        $this->assertInternalType('string', $cantonName);
+        $this->assertIsString($cantonName);
         $this->assertGreaterThan(2, strlen($cantonName));
     }
 
     /**
      * @test
      */
-    public function cantonShort ()
+    public function cantonShort()
     {
         $cantonShort = $this->faker->cantonShort();
-        $this->assertInternalType('string', $cantonShort);
+        $this->assertIsString($cantonShort);
         $this->assertEquals(2, strlen($cantonShort));
     }
 
     /**
      * @test
      */
-    public function address ()
+    public function address()
     {
         $address = $this->faker->address();
-        $this->assertInternalType('string', $address);
+        $this->assertIsString($address);
     }
 }

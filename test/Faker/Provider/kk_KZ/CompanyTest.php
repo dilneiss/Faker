@@ -1,17 +1,23 @@
 <?php
+
 namespace Faker\Test\Provider\kk_KZ;
 
 use Faker\Generator;
 use Faker\Provider\kk_KZ\Company;
 use PHPUnit\Framework\TestCase;
 
-final class CompanyTest extends TestCase
+class CompanyTest extends TestCase
 {
+
+    /**
+     * @var Generator
+     */
+    private $faker;
 
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->faker = new Generator();
 

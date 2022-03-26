@@ -6,14 +6,14 @@ use Faker\Generator;
 use Faker\Provider\es_ES\Payment;
 use PHPUnit\Framework\TestCase;
 
-final class PaymentTest extends TestCase
+class PaymentTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Payment($faker));
@@ -31,31 +31,30 @@ final class PaymentTest extends TestCase
      * Validation taken from https://github.com/amnesty/drupal-nif-nie-cif-validator/
      * @link https://github.com/amnesty/drupal-nif-nie-cif-validator/blob/master/includes/nif-nie-cif.php
      */
-    function isValidCIF($docNumber)
+    private function isValidCIF($docNumber)
     {
         $fixedDocNumber = strtoupper($docNumber);
 
         return $this->isValidCIFFormat($fixedDocNumber);
     }
 
-    function isValidCIFFormat($docNumber)
+    private function isValidCIFFormat($docNumber)
     {
         return $this->respectsDocPattern($docNumber, '/^[PQSNWR][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z0-9]/')
                 ||
                $this->respectsDocPattern($docNumber, '/^[ABCDEFGHJUV][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/');
     }
 
-    function respectsDocPattern($givenString, $pattern)
+    private function respectsDocPattern($givenString, $pattern)
     {
-        $isValid = FALSE;
+        $isValid = false;
         $fixedString = strtoupper($givenString);
         if (is_int(substr($fixedString, 0, 1))) {
             $fixedString = substr("000000000" . $givenString, -9);
         }
         if (preg_match($pattern, $fixedString)) {
-            $isValid = TRUE;
+            $isValid = true;
         }
         return $isValid;
     }
-
 }

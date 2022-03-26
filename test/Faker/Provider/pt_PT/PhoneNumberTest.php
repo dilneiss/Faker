@@ -6,9 +6,14 @@ use Faker\Generator;
 use Faker\Provider\pt_PT\PhoneNumber;
 use PHPUnit\Framework\TestCase;
 
-final class PhoneNumberTest extends TestCase
+class PhoneNumberTest extends TestCase
 {
-    protected function setUp()
+    /**
+     * @var Generator
+     */
+    private $faker;
+
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new PhoneNumber($faker));

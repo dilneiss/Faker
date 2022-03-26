@@ -4,7 +4,7 @@ namespace Faker\Provider\en_NG;
 
 class PhoneNumber extends \Faker\Provider\PhoneNumber
 {
-    protected static $formats = array(
+    protected static $formats = [
       // Local
       '0703#######',
       '0704#######',
@@ -36,7 +36,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
       '0905#######',
       '0908#######',
       '0909#######',
-      
+
       '+234703#######',
       '+234704#######',
       '+234705#######',
@@ -98,7 +98,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
       '0905 ### ####',
       '0908 ### ####',
       '0909 ### ####',
-      
+
       '+234 703 ### ####',
       '+234 704 ### ####',
       '+234 705 ### ####',
@@ -129,5 +129,5 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
       '+234 905 ### ####',
       '+234 908 ### ####',
       '+234 909 ### ####',
-    );
+    ];
 }

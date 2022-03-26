@@ -1,8 +1,9 @@
 <?php
+
 namespace Faker\Test\Provider;
 
-use Faker\Provider\en_US\Text;
 use Faker\Generator;
+use Faker\Provider\en_US\Text;
 use PHPUnit\Framework\TestCase;
 
 final class TextTest extends TestCase
@@ -42,7 +43,7 @@ final class TextTest extends TestCase
 
     public function testTextMaxIndex()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
 
         $this->generator->realText(200, 11);
 
@@ -51,7 +52,7 @@ final class TextTest extends TestCase
 
     public function testTextMinIndex()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
 
         $this->generator->realText(200, 0);
 
@@ -60,7 +61,7 @@ final class TextTest extends TestCase
 
     public function testTextMinLength()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        $this->expectException('InvalidArgumentException');
 
         $this->generator->realText(9);
 

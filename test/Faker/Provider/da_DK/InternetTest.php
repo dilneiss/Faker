@@ -3,12 +3,12 @@
 namespace Faker\Test\Provider\da_DK;
 
 use Faker\Generator;
-use Faker\Provider\da_DK\Person;
-use Faker\Provider\da_DK\Internet;
 use Faker\Provider\da_DK\Company;
+use Faker\Provider\da_DK\Internet;
+use Faker\Provider\da_DK\Person;
 use PHPUnit\Framework\TestCase;
 
-final class InternetTest extends TestCase
+class InternetTest extends TestCase
 {
 
     /**
@@ -16,7 +16,7 @@ final class InternetTest extends TestCase
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Person($faker));

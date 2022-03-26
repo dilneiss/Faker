@@ -1,19 +1,25 @@
 <?php
 
+/**
+ * Created by Domingo Oropeza <dioh_@hotmail.com> for Faker
+ * Date: 01/09/2017
+ * Time: 09:45 PM
+ */
+
 namespace Faker\Test\Provider\es_VE;
 
 use Faker\Generator;
 use Faker\Provider\es_VE\Company;
 use PHPUnit\Framework\TestCase;
 
-final class CompanyTest extends TestCase
+class CompanyTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->seed(1);
@@ -33,6 +39,4 @@ final class CompanyTest extends TestCase
         $rif = $this->faker->taxpayerIdentificationNumber('-');
         $this->assertRegExp($pattern, $rif);
     }
-
-
 }

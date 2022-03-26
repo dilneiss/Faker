@@ -6,14 +6,14 @@ use Faker\Generator;
 use Faker\Provider\zh_TW\Company;
 use PHPUnit\Framework\TestCase;
 
-final class CompanyTest extends TestCase
+class CompanyTest extends TestCase
 {
     /**
      * @var Generator
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Company($faker));

@@ -6,7 +6,7 @@ use Faker\Generator;
 use Faker\Provider\uk_UA\PhoneNumber;
 use PHPUnit\Framework\TestCase;
 
-final class PhoneNumberTest extends TestCase
+class PhoneNumberTest extends TestCase
 {
 
     /**
@@ -14,7 +14,7 @@ final class PhoneNumberTest extends TestCase
      */
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new PhoneNumber($faker));
@@ -30,7 +30,5 @@ final class PhoneNumberTest extends TestCase
             1,
             'Phone number format ' . $phoneNumber . ' is wrong!'
         );
-
     }
-
 }

@@ -4,7 +4,7 @@ namespace Faker\Provider;
 
 class Lorem extends Base
 {
-    protected static $wordList = array(
+    protected static $wordList = [
         'alias', 'consequatur', 'aut', 'perferendis', 'sit', 'voluptatem',
         'accusantium', 'doloremque', 'aperiam', 'eaque','ipsa', 'quae', 'ab',
         'illo', 'inventore', 'veritatis', 'et', 'quasi', 'architecto',
@@ -42,7 +42,7 @@ class Lorem extends Base
         'recusandae', 'itaque', 'earum', 'rerum', 'hic', 'tenetur', 'a',
         'sapiente', 'delectus', 'ut', 'aut', 'reiciendis', 'voluptatibus',
         'maiores', 'doloribus', 'asperiores', 'repellat'
-    );
+    ];
 
     /**
      * @example 'Lorem'
@@ -63,9 +63,9 @@ class Lorem extends Base
      */
     public static function words($nb = 3, $asText = false)
     {
-        $words = array();
-        for ($i=0; $i < $nb; $i++) {
-            $words []= static::word();
+        $words = [];
+        for ($i = 0; $i < $nb; $i++) {
+            $words [] = static::word();
         }
 
         return $asText ? implode(' ', $words) : $words;
@@ -105,9 +105,9 @@ class Lorem extends Base
      */
     public static function sentences($nb = 3, $asText = false)
     {
-        $sentences = array();
-        for ($i=0; $i < $nb; $i++) {
-            $sentences []= static::sentence();
+        $sentences = [];
+        for ($i = 0; $i < $nb; $i++) {
+            $sentences [] = static::sentence();
         }
 
         return $asText ? implode(' ', $sentences) : $sentences;
@@ -144,9 +144,9 @@ class Lorem extends Base
      */
     public static function paragraphs($nb = 3, $asText = false)
     {
-        $paragraphs = array();
-        for ($i=0; $i < $nb; $i++) {
-            $paragraphs []= static::paragraph();
+        $paragraphs = [];
+        for ($i = 0; $i < $nb; $i++) {
+            $paragraphs [] = static::paragraph();
         }
 
         return $asText ? implode("\n\n", $paragraphs) : $paragraphs;
@@ -170,7 +170,7 @@ class Lorem extends Base
 
         $type = ($maxNbChars < 25) ? 'word' : (($maxNbChars < 100) ? 'sentence' : 'paragraph');
 
-        $text = array();
+        $text = [];
         while (empty($text)) {
             $size = 0;
 

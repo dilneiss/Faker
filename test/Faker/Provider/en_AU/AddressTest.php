@@ -6,44 +6,42 @@ use Faker\Generator;
 use Faker\Provider\en_AU\Address;
 use PHPUnit\Framework\TestCase;
 
-final class AddressTest extends TestCase
+class AddressTest extends TestCase
 {
 
   /**
-   * @var Faker\Generator
+   * @var Generator
    */
-  private $faker;
+    private $faker;
 
-  protected function setUp()
-  {
-    $faker = new Generator();
-    $faker->addProvider(new Address($faker));
-    $this->faker = $faker;
-  }
+    protected function setUp(): void
+    {
+        $faker = new Generator();
+        $faker->addProvider(new Address($faker));
+        $this->faker = $faker;
+    }
 
-  public function testCityPrefix()
-  {
-    $cityPrefix = $this->faker->cityPrefix();
-    $this->assertNotEmpty($cityPrefix);
-    $this->assertInternalType('string', $cityPrefix);
-    $this->assertRegExp('/[A-Z][a-z]+/', $cityPrefix);
-  }
+    public function testCityPrefix()
+    {
+        $cityPrefix = $this->faker->cityPrefix();
+        $this->assertNotEmpty($cityPrefix);
+        $this->assertIsString($cityPrefix);
+        $this->assertRegExp('/[A-Z][a-z]+/', $cityPrefix);
+    }
 
-  public function testStreetSuffix()
-  {
-    $streetSuffix = $this->faker->streetSuffix();
-    $this->assertNotEmpty($streetSuffix);
-    $this->assertInternalType('string', $streetSuffix);
-    $this->assertRegExp('/[A-Z][a-z]+/', $streetSuffix);
-  }
+    public function testStreetSuffix()
+    {
+        $streetSuffix = $this->faker->streetSuffix();
+        $this->assertNotEmpty($streetSuffix);
+        $this->assertIsString($streetSuffix);
+        $this->assertRegExp('/[A-Z][a-z]+/', $streetSuffix);
+    }
 
-  public function testState()
-  {
-    $state = $this->faker->state();
-    $this->assertNotEmpty($state);
-    $this->assertInternalType('string', $state);
-    $this->assertRegExp('/[A-Z][a-z]+/', $state);
-  }
+    public function testState()
+    {
+        $state = $this->faker->state();
+        $this->assertNotEmpty($state);
+        $this->assertIsString($state);
+        $this->assertRegExp('/[A-Z][a-z]+/', $state);
+    }
 }
-
-?>

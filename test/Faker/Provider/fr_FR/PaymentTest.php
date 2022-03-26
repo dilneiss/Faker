@@ -7,11 +7,11 @@ use Faker\Generator;
 use Faker\Provider\fr_FR\Payment;
 use PHPUnit\Framework\TestCase;
 
-final class PaymentTest extends TestCase
+class PaymentTest extends TestCase
 {
     private $faker;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $faker = new Generator();
         $faker->addProvider(new Payment($faker));
@@ -29,7 +29,7 @@ final class PaymentTest extends TestCase
 
         $key = (int) substr($siren, 2, 2);
         if ($key === 0) {
-            $this->assertEqual($key, (12 + 3 * ($siren % 97)) % 97);            
+            $this->assertEquals($key, (12 + 3 * ($siren % 97)) % 97);
         }
     }
 
@@ -43,7 +43,7 @@ final class PaymentTest extends TestCase
 
         $key = (int) substr($siren, 2, 2);
         if ($key === 0) {
-            $this->assertEqual($key, (12 + 3 * ($siren % 97)) % 97);            
+            $this->assertEquals($key, (12 + 3 * ($siren % 97)) % 97);
         }
     }
 }

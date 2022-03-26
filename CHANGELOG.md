@@ -1,19 +1,19 @@
 # CHANGELOG
 
-## 2019-12-03, v1.9.1
+All notable changes to this project will be documented in this file.
 
-- Add link to PHPStan extension to readme [\#1834](https://github.com/fzaninotto/Faker/pull/1834) ([finwe](https://github.com/finwe))
-- Enhancement: Collect code coverage [\#1824](https://github.com/fzaninotto/Faker/pull/1824) ([localheinz](https://github.com/localheinz))
-- Enhancement: Use all columns when running tests [\#1823](https://github.com/fzaninotto/Faker/pull/1823) ([localheinz](https://github.com/localheinz))
-- Enhancement: Configure verbose output via phpunit.xml.dist [\#1822](https://github.com/fzaninotto/Faker/pull/1822) ([localheinz](https://github.com/localheinz))
-- Curly braces for arrays is deprecated in PHP 7.4 [\#1843](https://github.com/fzaninotto/Faker/pull/1843) ([wimg](https://github.com/wimg))
-- Fix: Reduce visibility of setUp\(\) and tearDown\(\) [\#1821](https://github.com/fzaninotto/Faker/pull/1821) ([localheinz](https://github.com/localheinz))
-- Fix: Mark test classes as final [\#1820](https://github.com/fzaninotto/Faker/pull/1820) ([localheinz](https://github.com/localheinz))
-- Fix: Remove unnecessary class-level DocBlocks [\#1819](https://github.com/fzaninotto/Faker/pull/1819) ([localheinz](https://github.com/localheinz))
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## TDB, v2.0.0
+
+### Removed
+
+- Removed legacy autoloader [\#1911](https://github.com/fzaninotto/Faker/pull/1911) ([pimjansen](https://github.com/pimjansen))
+- Removed ORM and ODM integrations [\#1957](https://github.com/fzaninotto/Faker/pull/1957) ([pimjansen](https://github.com/pimjansen))
 
 ## 2019-11-10, v1.9.0
 
-This will the last minor release in the `1.x` cycle.  
+This will the last minor release in the `1.x` cycle.
 
 - Add all Iran's provinces land lines numbers [\#1806](https://github.com/fzaninotto/Faker/pull/1806) ([kingofnull](https://github.com/kingofnull))
 - replace latin "B" to cyrillic "B" for uk\_UA locale [\#1800](https://github.com/fzaninotto/Faker/pull/1800) ([FI-LIFE](https://github.com/FI-LIFE))

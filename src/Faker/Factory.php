@@ -6,7 +6,7 @@ class Factory
 {
     const DEFAULT_LOCALE = 'en_US';
 
-    protected static $defaultProviders = array('Address', 'Barcode', 'Biased', 'Color', 'Company', 'DateTime', 'File', 'HtmlLorem', 'Image', 'Internet', 'Lorem', 'Miscellaneous', 'Payment', 'Person', 'PhoneNumber', 'Text', 'UserAgent', 'Uuid');
+    protected static $defaultProviders = ['Address', 'Barcode', 'Biased', 'Color', 'Company', 'DateTime', 'File', 'HtmlLorem', 'Image', 'Internet', 'Lorem', 'Miscellaneous', 'Payment', 'Person', 'PhoneNumber', 'Text', 'UserAgent', 'Uuid'];
 
     /**
      * Create a new generator
@@ -49,7 +49,7 @@ class Factory
     /**
      * @param string $provider
      * @param string $locale
-     * @return string
+     * @return string|null
      */
     protected static function findProviderClassname($provider, $locale = '')
     {
